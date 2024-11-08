@@ -3,7 +3,16 @@ import { motion } from "framer-motion";
 import fs from "fs";
 import matter from "gray-matter";
 import { useAtom } from "jotai";
-import { CodeXml, FileText, Github, Linkedin, Mail, PencilLine, User } from "lucide-react";
+import {
+  CodeXml,
+  FileText,
+  Github,
+  Linkedin,
+  Mail,
+  PencilLine,
+  User,
+  Library,
+} from "lucide-react";
 import { type GetStaticProps, type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -65,34 +74,32 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             João Vitor Dadas
           </h1>
           <p className="mt-4 pb-12 text-base text-neutral-500 sm:mt-0">
-          Coding, training, creating — just a brazilian tech enthusiast.</p>
+            Coding, training, creating — just a brazilian tech enthusiast.
+          </p>
         </div>
 
         {/* PROJECTS */}
         <div className={`${shouldAnimate ? "animate-7" : ""}`}>
           <div className="flex items-center gap-2 pb-6">
             <CodeXml className={`h-3.5 w-3.5 text-neutral-200`} />
-            <h2 className={`text-sm text-neutral-500`}>Projects I&apos;ve worked on</h2>
+            <h2 className={`text-sm text-neutral-500`}>
+              Projects I&apos;ve worked on
+            </h2>
           </div>
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 pb-12">
-
-          <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <p>
-                <LinkText href="https://www.ebanx.com/en/">
-                  EBANX
-                </LinkText>{" "}
+                <LinkText href="https://www.ebanx.com/en/">EBANX</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
                 Work as a Software Engineer{" "}
                 <span className="italic">(fintech)</span>.
               </p>
             </div>
-            
+
             <div className="flex flex-col gap-2">
               <p>
-                <LinkText href="https://sbcash.com.br/">
-                  SbCash
-                </LinkText>{" "}
+                <LinkText href="https://sbcash.com.br/">SbCash</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
                 Work in front-end as a engineer{" "}
@@ -102,9 +109,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
 
             <div className="flex flex-col gap-2">
               <p>
-                <LinkText href="https://cargon.com.br/esg/">
-                  CargOn
-                </LinkText>{" "}
+                <LinkText href="https://cargon.com.br/esg/">CargOn</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
                 Work as a Software Engineer{" "}
@@ -140,6 +145,41 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               </motion.li>
             ))}
           </ul>
+        </div>
+
+        <div className="flex justify-between pb-6 pt-8 align-middle">
+          <div className="flex items-center gap-2">
+            <Library className={`h-3.5 w-3.5 text-neutral-200`} />
+            <h2 className={`text-sm text-neutral-500`}>Songs</h2>
+          </div>
+          <Link
+            href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
+            className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#FF3B3A]`}
+          >
+            See all...
+          </Link>
+        </div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-4 pb-12">
+          <iframe
+            src="https://open.spotify.com/embed/playlist/4F1bTqjUDMaAa5f7eL1xZW?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            style={{ borderRadius: "12px" }}
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
+          <iframe
+            src="https://open.spotify.com/embed/playlist/1TyYrFxEMmWxc5fCOOwu1u?utm_source=generator&theme=0"
+            width="100%"
+            height="352"
+            style={{ borderRadius: "12px" }}
+            frameBorder="0"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          ></iframe>
         </div>
 
         {/* CONNECT */}
