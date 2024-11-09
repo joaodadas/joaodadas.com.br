@@ -147,6 +147,9 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           </ul>
         </div>
 
+        {/* MUSIC */}
+        <div className={`${shouldAnimate ? "animate-13" : ""}`}>
+
         <div className="flex justify-between pb-6 pt-8 align-middle">
           <div className="flex items-center gap-2">
             <Library className={`h-3.5 w-3.5 text-neutral-200`} />
@@ -159,27 +162,28 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             See all...
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-4 pb-12">
+        <div className="flex flex-col align-middle  gap-x-8 gap-y-4">
           <iframe
-            src="https://open.spotify.com/embed/playlist/4F1bTqjUDMaAa5f7eL1xZW?utm_source=generator&theme=0"
+            src="https://open.spotify.com/embed/playlist/0SND6Pk2PyUTfTVcpaSRI7?utm_source=generator&theme=0"
             width="100%"
-            height="352"
-            style={{ borderRadius: "12px" }}
+            height="152"
+            style={{ borderRadius: "12px",}}
             frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             allowFullScreen
             loading="lazy"
           ></iframe>
-          <iframe
+          {/* <iframe
             src="https://open.spotify.com/embed/playlist/1TyYrFxEMmWxc5fCOOwu1u?utm_source=generator&theme=0"
-            width="100%"
-            height="352"
+            width="80%"
+            height="152"
             style={{ borderRadius: "12px" }}
             frameBorder="0"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             allowFullScreen
             loading="lazy"
-          ></iframe>
+          ></iframe> */}
+        </div>
         </div>
 
         {/* CONNECT */}
