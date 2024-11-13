@@ -128,7 +128,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             </div>
             <Link
               href="/blog"
-              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#FF3B3A]`}
+              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#007AFE]`}
             >
               Full content...
             </Link>
@@ -157,7 +157,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           </div>
           <Link
             href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
-            className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#FF3B3A]`}
+            className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#007AFE]`}
           >
             See all...
           </Link>

@@ -6,7 +6,7 @@ interface QuoteProps {
 const Quote = ({ children }: QuoteProps) => {
   return (
     <div className="flex gap-4">
-      <div className={`w-0.5 bg-[#D21044]`} />
+      <div className={`w-0.5 bg-[#007AFE]`} />
       <blockquote> {children} </blockquote>
     </div>
   );

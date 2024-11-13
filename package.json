@@ -24,6 +24,7 @@
     "@vercel/analytics": "^1.0.1",
     "@vercel/og": "^0.5.8",
     "framer-motion": "^10.16.1",
+    "git-filter-repo": "^0.0.30",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.8.0",
     "inter-ui": "^4.0.2",
