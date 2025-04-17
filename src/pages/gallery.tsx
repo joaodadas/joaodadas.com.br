@@ -6,12 +6,11 @@ import BackButton from "~/components/BackButton";
 import ContentWrapper from "~/components/ContentWrapper";
 import Image from "next/image";
 
-
 export interface GalleryProps {
   images: { name: string; src: string }[];
 }
 
-const Galery: NextPage = ({ images }) => {
+const Galery: NextPage<GalleryProps> = ({ images }) => {
   return (
     <>
       <Head>
@@ -32,18 +31,18 @@ const Galery: NextPage = ({ images }) => {
         <BackButton href="/" />
         <h1 className={`mb-6 text-sm text-neutral-500`}>Gallery</h1>
         <div className="gallery">
-      {images.map((image) => (
-        <div key={image.name} className="image">
-          <Image
-            src={image.src}
-            alt={image.name}
-            width={300} // Set desired width
-            height={200} // Set desired height
-          />
-          <p>{image.name}</p>
+          {images.map((image: { name: string; src: string }) => (
+            <div key={image.name} className="image">
+              <Image
+                src={image.src}
+                alt={image.name}
+                width={300} // Set desired width
+                height={200} // Set desired height
+              />
+              <p>{image.name}</p>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
       </ContentWrapper>
     </>
   );
