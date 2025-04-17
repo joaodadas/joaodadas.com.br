@@ -34,14 +34,6 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
       }, 2000);
     }
 
-    console.log(`
-    ..####...##..##...####...######...####...##..##...####..
-    .##......##..##..##........##....##..##..##..##..##..##.
-    .##.###..##..##...####.....##....######..##..##..##..##.
-    .##..##..##..##......##....##....##..##...####...##..##.
-    ..####....####....####.....##....##..##....##.....####..
-    ........................................................    
-`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -69,12 +61,14 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
           <h1
-            className={`pt-16 text-lg font-semibold text-neutral-200 sm:pb-4 sm:pt-24`}
+            className="pt-16 text-lg font-semibold sm:pb-4 sm:pt-24"
+            data-text="João Vitor Dadas"
           >
-            João Vitor Dadas
+            <span className="typing-text">João Vitor Dadas</span>
           </h1>
+
           <p className="mt-4 pb-12 text-base text-neutral-500 sm:mt-0">
-            Coding, training, creating — just a brazilian tech enthusiast.
+            Entrepreneurship, knowledge, and self-improvement.
           </p>
         </div>
 
@@ -102,7 +96,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                 <LinkText href="https://sbcash.com.br/">SbCash</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
-                Work in front-end as a engineer{" "}
+                Work as a front-end engineer{" "}
                 <span className="italic">(fintech)</span>.
               </p>
             </div>
@@ -128,7 +122,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             </div>
             <Link
               href="/blog"
-              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#007AFE]`}
+              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#C49B66]`}
             >
               Full content...
             </Link>
@@ -149,31 +143,30 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
 
         {/* MUSIC */}
         <div className={`${shouldAnimate ? "animate-13" : ""}`}>
-
-        <div className="flex justify-between pb-6 pt-8 align-middle">
-          <div className="flex items-center gap-2">
-            <Library className={`h-3.5 w-3.5 text-neutral-200`} />
-            <h2 className={`text-sm text-neutral-500`}>Songs</h2>
+          <div className="flex justify-between pb-6 pt-8 align-middle">
+            <div className="flex items-center gap-2">
+              <Library className={`h-3.5 w-3.5 text-neutral-200`} />
+              <h2 className={`text-sm text-neutral-500`}>Songs</h2>
+            </div>
+            <Link
+              href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
+              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#C49B66]`}
+            >
+              See all...
+            </Link>
           </div>
-          <Link
-            href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
-            className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#007AFE]`}
-          >
-            See all...
-          </Link>
-        </div>
-        <div className="flex flex-col align-middle  gap-x-8 gap-y-4">
-          <iframe
-            src="https://open.spotify.com/embed/playlist/0SND6Pk2PyUTfTVcpaSRI7?utm_source=generator&theme=0"
-            width="100%"
-            height="152"
-            style={{ borderRadius: "12px",}}
-            frameBorder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
-          {/* <iframe
+          <div className="flex flex-col gap-x-8  gap-y-4 align-middle">
+            <iframe
+              style={{ borderRadius: "12px" }}
+              src="https://open.spotify.com/embed/playlist/4F1bTqjUDMaAa5f7eL1xZW?utm_source=generator&theme=0"
+              width="100%"
+              height="152"
+              frameBorder="0"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
+            {/* <iframe
             src="https://open.spotify.com/embed/playlist/1TyYrFxEMmWxc5fCOOwu1u?utm_source=generator&theme=0"
             width="80%"
             height="152"
@@ -183,7 +176,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             allowFullScreen
             loading="lazy"
           ></iframe> */}
-        </div>
+          </div>
         </div>
 
         {/* CONNECT */}

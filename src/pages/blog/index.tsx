@@ -25,7 +25,7 @@ const Blog: NextPage<BlogPageProps> = ({ postsMetadata }) => {
   const sortedPostsMetadata = postsMetadata.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-
+  console.log(" testeeeeesaasdasd", sortedPostsMetadata )
   return (
     <>
       <Head>

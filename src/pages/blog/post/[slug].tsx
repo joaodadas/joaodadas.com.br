@@ -58,6 +58,7 @@ export const getStaticPaths: GetStaticPaths = () => {
   const postsDirectory = path.join(process.cwd(), "src", "posts");
   const fileNames = fs.readdirSync(postsDirectory);
 
+  console.log('DSSJKDJ',  fileNames)
   const paths = fileNames.map((fileName) => {
     const slug = fileName.replace(/\.mdx$/, "");
     return {

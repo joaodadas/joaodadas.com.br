@@ -6,7 +6,7 @@ const BackButton = ({ href }: { href: string }) => {
     <div className="pb-6 pt-12">
       <Link href={href}>
         <ArrowLeft
-          className={`cursor-pointer text-xl h-4 w-4 transition duration-200 ease-in-out hover:text-[#007AFE]`}
+          className={`h-4 w-4 cursor-pointer text-xl transition duration-200 ease-in-out hover:text-[#C49B66]`}
         />
       </Link>
     </div>

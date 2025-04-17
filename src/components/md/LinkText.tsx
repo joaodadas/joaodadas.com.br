@@ -9,7 +9,7 @@ const LinkText = ({ children, href }: LinkTextProps) => {
   return (
     <Link
       href={href}
-      className={`text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#007AFE]`}
+      className={`text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#C49B66]`}
     >
       {children}
     </Link>
