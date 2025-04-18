@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { motion } from "framer-motion";
 import fs from "fs";
 import matter from "gray-matter";
@@ -22,6 +21,8 @@ import ContentWrapper from "~/components/ContentWrapper";
 import LinkText from "~/components/md/LinkText";
 import PostPreview from "~/components/PostPreview";
 import { animateAtom } from "~/utils/atoms";
+import DecryptedText from "~/components/DecryptedText";
+import NowPlaying from "~/components/NowPlaying";
 import { type BlogPageProps, type PostMetadata } from "./blog";
 
 const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
@@ -33,9 +34,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         setShouldAnimate(false);
       }, 2000);
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [shouldAnimate, setShouldAnimate]);
 
   const sortedPostsMetadata = postsMetadata
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -60,16 +59,28 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
       <ContentWrapper>
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
-          <h1
-            className="pt-16 text-lg font-semibold sm:pb-4 sm:pt-24"
-            data-text="João Vitor Dadas"
-          >
-            <span className="typing-text">João Vitor Dadas</span>
-          </h1>
+          <div>
+            <DecryptedText
+              text="João Vitor Dadas"
+              speed={100}
+              maxIterations={10}
+              animateOn="view"
+              className="text-lg font-semibold text-white"
+              parentClassName="pt-16 sm:pb-4 sm:pt-24"
+            />
+          </div>
 
-          <p className="mt-4 pb-12 text-base text-neutral-500 sm:mt-0">
-            Entrepreneurship, knowledge, and self-improvement.
-          </p>
+          <div>
+            <DecryptedText
+              text="Entrepreneurship, knowledge, and self-improvement."
+              speed={50}
+              maxIterations={10}
+              animateOn="view"
+              sequential
+              className="text-base text-neutral-500"
+              parentClassName="mt-4 pb-12 sm:mt-0"
+            />
+          </div>
         </div>
 
         {/* PROJECTS */}
@@ -146,16 +157,17 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           <div className="flex justify-between pb-6 pt-8 align-middle">
             <div className="flex items-center gap-2">
               <Library className={`h-3.5 w-3.5 text-neutral-200`} />
-              <h2 className={`text-sm text-neutral-500`}>Songs</h2>
+              <h2 className={`text-sm text-neutral-500`}>Música</h2>
             </div>
             <Link
               href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
               className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[#C49B66]`}
             >
-              See all...
+              Ver todas...
             </Link>
           </div>
-          <div className="flex flex-col gap-x-8  gap-y-4 align-middle">
+          <div className="flex flex-col gap-4">
+            <NowPlaying />
             <iframe
               style={{ borderRadius: "12px" }}
               src="https://open.spotify.com/embed/playlist/4F1bTqjUDMaAa5f7eL1xZW?utm_source=generator&theme=0"
@@ -166,16 +178,6 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
               loading="lazy"
             ></iframe>
-            {/* <iframe
-            src="https://open.spotify.com/embed/playlist/1TyYrFxEMmWxc5fCOOwu1u?utm_source=generator&theme=0"
-            width="80%"
-            height="152"
-            style={{ borderRadius: "12px" }}
-            frameBorder="0"
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          ></iframe> */}
           </div>
         </div>
 
