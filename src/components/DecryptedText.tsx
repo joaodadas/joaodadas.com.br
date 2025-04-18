@@ -1,10 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
 import type { CSSProperties, MouseEventHandler } from "react";
 
-interface DecryptedTextProps {
+interface DecryptedTextProps extends Record<string, unknown> {
   text: string;
   speed?: number;
   maxIterations?: number;

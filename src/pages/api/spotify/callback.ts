@@ -32,16 +32,15 @@ export default async function handler(
   // Verifica se houve erro na autorização
   if (error) {
     console.error("Erro na autorização:", error);
-    const errorMessage =
-      typeof error === "string" ? error : "Erro desconhecido";
+    const errorMessage = String(error);
     return res.redirect(
-      "/?spotify=error&message=" + encodeURIComponent(errorMessage)
+      `/?spotify=error&message=${encodeURIComponent(errorMessage)}`
     );
   }
 
   // Verifica se o código foi fornecido
   if (!code) {
-    return res.redirect("/?spotify=error&message=code_missing");
+    return res.redirect(`/?spotify=error&message=code_missing`);
   }
 
   try {
@@ -91,11 +90,10 @@ export default async function handler(
     }
   } catch (error) {
     console.error("Erro ao processar callback:", error);
+    const errorMessage =
+      error instanceof Error ? error.message : "Erro desconhecido";
     return res.redirect(
-      "/?spotify=error&message=" +
-        encodeURIComponent(
-          error instanceof Error ? error.message : "Erro desconhecido"
-        )
+      `/?spotify=error&message=${encodeURIComponent(errorMessage)}`
     );
   }
 }
