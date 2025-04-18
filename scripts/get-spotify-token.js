@@ -1,25 +1,106 @@
-const CLIENT_ID = "b9447e0f80a943f6b7e6d9371c6abf6b";
-const CLIENT_SECRET = "bcbf59743d634f958725f4583683e7c1";
-const REDIRECT_URI = "https://joaodadas.com.br/api/spotify/callback";
-const SCOPES = "user-read-currently-playing user-read-recently-played";
+/**
+ * Script para obter um novo token de atualização do Spotify
+ *
+ * Uso:
+ * 1. Instale as dependências: npm install dotenv node-fetch
+ * 2. Execute: node scripts/get-spotify-token.js
+ */
 
-// URL de autorização
-const authURL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${REDIRECT_URI}&scope=${SCOPES}`;
+require("dotenv").config();
+const fetch = require("node-fetch");
+const readline = require("readline");
+const fs = require("fs");
+const path = require("path");
 
-console.log("Siga estes passos:");
-console.log("\n1. Abra esta URL no navegador:");
-console.log("\x1b[36m%s\x1b[0m", authURL);
-console.log("\n2. Faça login no Spotify e autorize o aplicativo");
-console.log("3. Você será redirecionado para uma URL que contém um código");
-console.log("4. Copie o código da URL (a parte após ?code=)");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+
+if (!client_id || !client_secret) {
+  console.error(
+    "Erro: SPOTIFY_CLIENT_ID e SPOTIFY_CLIENT_SECRET devem estar definidos no arquivo .env"
+  );
+  process.exit(1);
+}
+
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
+
+console.log("=== Obtenção de Token do Spotify ===");
+console.log("IMPORTANTE: Antes de continuar, certifique-se de que:");
 console.log(
-  "\n5. Execute este comando substituindo CÓDIGO_AQUI pelo código copiado:"
+  "1. Você configurou o URI de redirecionamento no painel do desenvolvedor do Spotify"
 );
 console.log(
-  "\x1b[33m%s\x1b[0m",
-  `curl -X POST -H "Authorization: Basic ${Buffer.from(
-    CLIENT_ID + ":" + CLIENT_SECRET
-  ).toString(
-    "base64"
-  )}" -d grant_type=authorization_code -d code=CÓDIGO_AQUI -d redirect_uri=${REDIRECT_URI} https://accounts.spotify.com/api/token`
+  "2. O URI de redirecionamento configurado é: https://joaodadas.com.br/api/spotify/callback"
 );
+console.log("\n1. Acesse a URL abaixo no seu navegador:");
+console.log(
+  `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=code&redirect_uri=https://joaodadas.com.br/api/spotify/callback&scope=user-read-currently-playing%20user-read-recently-played`
+);
+console.log(
+  "\n2. Após autorizar, você será redirecionado para uma URL com um código."
+);
+console.log('3. Copie o código da URL (parâmetro "code=") e cole abaixo:');
+
+rl.question("Código de autorização: ", async (code) => {
+  try {
+    console.log("\nObtendo token de atualização...");
+
+    const response = await fetch("https://accounts.spotify.com/api/token", {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${basic}`,
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams({
+        grant_type: "authorization_code",
+        code: code,
+        redirect_uri: "https://joaodadas.com.br/api/spotify/callback",
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Erro ao obter token:", errorText);
+      rl.close();
+      return;
+    }
+
+    const data = await response.json();
+
+    console.log("\n=== Tokens obtidos com sucesso ===");
+    console.log("Access Token:", data.access_token);
+    console.log("Refresh Token:", data.refresh_token);
+    console.log("\nAtualize o arquivo .env com o novo refresh_token:");
+    console.log(`SPOTIFY_REFRESH_TOKEN=${data.refresh_token}`);
+
+    // Perguntar se deseja atualizar o arquivo .env automaticamente
+    rl.question(
+      "\nDeseja atualizar o arquivo .env automaticamente? (s/n): ",
+      (answer) => {
+        if (answer.toLowerCase() === "s") {
+          const envPath = path.resolve(process.cwd(), ".env");
+          let envContent = fs.readFileSync(envPath, "utf8");
+
+          // Atualizar o refresh_token no arquivo .env
+          envContent = envContent.replace(
+            /SPOTIFY_REFRESH_TOKEN=.*/,
+            `SPOTIFY_REFRESH_TOKEN=${data.refresh_token}`
+          );
+
+          fs.writeFileSync(envPath, envContent);
+          console.log("Arquivo .env atualizado com sucesso!");
+        }
+
+        rl.close();
+      }
+    );
+  } catch (error) {
+    console.error("Erro:", error.message);
+    rl.close();
+  }
+});

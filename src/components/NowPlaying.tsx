@@ -1,72 +1,115 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import Image from "next/image";
+import type { SongData } from "~/types/spotify";
 import Link from "next/link";
 
-interface SongData {
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  isPlaying: boolean;
-  songUrl: string;
+interface ApiResponse {
+  error?: string;
+  title?: string;
+  artist?: string;
+  songUrl?: string;
 }
 
 export default function NowPlaying() {
   const [song, setSong] = useState<SongData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchSong = async () => {
       try {
+        setIsLoading(true);
+        setError(null);
         const response = await fetch("/api/spotify/song");
-        if (!response.ok) throw new Error("Falha ao buscar música");
-        const data = (await response.json()) as SongData;
-        setSong(data);
-      } catch (error) {
-        console.error("Erro ao buscar música:", error);
+        const data = (await response.json()) as ApiResponse;
+
+        if (!response.ok) {
+          throw new Error(data.error || "Erro ao buscar música");
+        }
+
+        if (data.title && data.artist && data.songUrl) {
+          setSong({
+            title: data.title,
+            artist: data.artist,
+            songUrl: data.songUrl,
+            isPlaying: true,
+            album: "",
+            albumImageUrl: "",
+          });
+        } else {
+          setSong(null);
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Erro ao buscar música");
+        setSong(null);
       } finally {
         setIsLoading(false);
       }
     };
 
     void fetchSong();
-    const interval = setInterval(() => void fetchSong(), 30000); // Atualiza a cada 30 segundos
+    const interval = setInterval(() => void fetchSong(), 30000);
 
     return () => clearInterval(interval);
   }, []);
 
-  if (isLoading || !song) return null;
+  if (isLoading) {
+    return (
+      <div className="flex items-center space-x-2 text-sm text-gray-500">
+        <div className="h-4 w-4 animate-spin rounded-full border-2 border-gray-300 border-t-gray-600" />
+        <span>Carregando música...</span>
+      </div>
+    );
+  }
+
+  if (error) {
+    if (
+      error.includes("Credenciais do Spotify não configuradas") ||
+      error.includes("Erro ao obter token de acesso") ||
+      error.includes("invalid_grant")
+    ) {
+      return (
+        <div className="flex flex-col space-y-2 text-sm">
+          <div className="flex items-center space-x-2 text-red-500">
+            <span>⚠️</span>
+            <span>Erro de autenticação do Spotify</span>
+          </div>
+          <Link
+            href="/spotify-auth"
+            className="text-xs text-blue-500 hover:underline"
+          >
+            Clique aqui para autorizar
+          </Link>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex items-center space-x-2 text-sm text-red-500">
+        <span>⚠️</span>
+        <span>{error}</span>
+      </div>
+    );
+  }
+
+  if (!song) {
+    return (
+      <div className="flex items-center space-x-2 text-sm text-gray-500">
+        <span>Nenhuma música tocando</span>
+      </div>
+    );
+  }
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="flex items-center gap-4 rounded-lg border border-neutral-700/50 bg-neutral-800/50 p-4 backdrop-blur-sm"
-    >
-      <div className="relative h-16 w-16">
-        <Image
-          src={song.albumImageUrl}
-          alt={song.album}
-          fill
-          className="rounded-md object-cover"
-        />
-      </div>
-      <div className="flex flex-col">
-        <p className="text-sm text-neutral-400">
-          {song.isPlaying ? "Ouvindo agora" : "Última música"}
-        </p>
-        <Link
-          href={song.songUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white transition-colors duration-200 hover:text-[#C49B66]"
-        >
-          {song.title}
-        </Link>
-        <p className="text-sm text-neutral-500">{song.artist}</p>
-        <p className="text-xs text-neutral-600">{song.album}</p>
-      </div>
-    </motion.div>
+    <div className="flex items-center space-x-2 text-sm">
+      <span className="text-green-500">▶️</span>
+      <a
+        href={song.songUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        {song.title} - {song.artist}
+      </a>
+    </div>
   );
 }

@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/spotify/refresh-token",
+      "schedule": "0 */12 * * *"
+    }
+  ]
+} 

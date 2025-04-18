@@ -1,5 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+
+interface SongData {
+  title: string;
+  artist: string;
+  album: string;
+  albumImageUrl: string;
+  isPlaying: boolean;
+  songUrl: string;
+}
 
 interface DecryptedTextProps {
   text: string;
@@ -13,7 +24,7 @@ interface DecryptedTextProps {
   encryptedClassName?: string;
   parentClassName?: string;
   animateOn?: "view" | "hover";
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 export default function DecryptedText({
@@ -89,19 +100,12 @@ export default function DecryptedText({
           isRevealed: currentRevealed.has(i),
         }));
 
-        const nonSpaceChars = positions
+        let nonSpaceChars = positions
           .filter((p) => !p.isSpace && !p.isRevealed)
           .map((p) => p.char);
 
-        for (let i = nonSpaceChars.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          const charI = nonSpaceChars[i];
-          const charJ = nonSpaceChars[j];
-          if (typeof charI === "string" && typeof charJ === "string") {
-            nonSpaceChars[i] = charJ;
-            nonSpaceChars[j] = charI;
-          }
-        }
+        // Fisher-Yates shuffle com tipagem segura
+        nonSpaceChars = [...nonSpaceChars].sort(() => Math.random() - 0.5);
 
         let charIndex = 0;
         return positions

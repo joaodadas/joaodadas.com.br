@@ -20,6 +20,7 @@ import UnorderedList from "~/components/md/UnorderedList";
 import "~/styles/globals.css";
 import CustomCursor from "~/components/CustomCursor";
 import { api } from "~/utils/api";
+import "~/utils/suppressWarnings";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   const components = {
