@@ -1,16 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import Link from "next/link";
-
-interface SongData {
-  title: string;
-  artist: string;
-  album: string;
-  albumImageUrl: string;
-  isPlaying: boolean;
-  songUrl: string;
-}
 
 interface DecryptedTextProps {
   text: string;

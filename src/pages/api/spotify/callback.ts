@@ -27,7 +27,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const code = req.query.code as string;
-  const state = req.query.state as string;
   const error = req.query.error as string;
 
   // Verifica se houve erro na autorização
