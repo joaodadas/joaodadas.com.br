@@ -32,7 +32,11 @@ export default async function handler(
   // Verifica se houve erro na autorização
   if (error) {
     console.error("Erro na autorização:", error);
-    return res.redirect("/?spotify=error&message=" + encodeURIComponent(error));
+    const errorMessage =
+      typeof error === "string" ? error : "Erro desconhecido";
+    return res.redirect(
+      "/?spotify=error&message=" + encodeURIComponent(errorMessage)
+    );
   }
 
   // Verifica se o código foi fornecido

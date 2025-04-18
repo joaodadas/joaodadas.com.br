@@ -1,5 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import type { CSSProperties, MouseEventHandler } from "react";
 
 interface DecryptedTextProps {
   text: string;
@@ -13,7 +16,11 @@ interface DecryptedTextProps {
   encryptedClassName?: string;
   parentClassName?: string;
   animateOn?: "view" | "hover";
-  [key: string]: unknown;
+  // Props específicas do React
+  style?: CSSProperties;
+  onClick?: MouseEventHandler<HTMLSpanElement>;
+  onMouseEnter?: MouseEventHandler<HTMLSpanElement>;
+  onMouseLeave?: MouseEventHandler<HTMLSpanElement>;
 }
 
 export default function DecryptedText({
