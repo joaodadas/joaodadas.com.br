@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import type { SongData } from "~/types/spotify";
+import H1 from "~/components/md/H1";
 import Link from "next/link";
+import H2 from "./md/H2";
 
 interface ApiResponse {
   error?: string;
@@ -101,7 +103,6 @@ export default function NowPlaying() {
 
   return (
     <div className="flex items-center space-x-2 text-sm">
-      <span className="text-green-500">▶️</span>
       <a
         href={song.songUrl}
         target="_blank"

@@ -18,7 +18,6 @@ import Quote from "~/components/md/Quote";
 import Strong from "~/components/md/Strong";
 import UnorderedList from "~/components/md/UnorderedList";
 import "~/styles/globals.css";
-import CustomCursor from "~/components/CustomCursor";
 import { api } from "~/utils/api";
 import "~/utils/suppressWarnings";
 
@@ -58,8 +57,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           />
         </Head>
         <main className="firefox-scrollbar-fix min-h-screen bg-[#111112] text-neutral-200">
-          <CustomCursor />
-
           {/* <Header /> */}
           <Component {...pageProps} />
         </main>
