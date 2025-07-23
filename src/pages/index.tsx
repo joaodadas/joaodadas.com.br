@@ -21,8 +21,6 @@ import ContentWrapper from "~/components/ContentWrapper";
 import LinkText from "~/components/md/LinkText";
 import PostPreview from "~/components/PostPreview";
 import { animateAtom } from "~/utils/atoms";
-import DecryptedText from "~/components/DecryptedText";
-import NowPlaying from "~/components/NowPlaying";
 import { type BlogPageProps, type PostMetadata } from "./blog";
 
 const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
@@ -60,26 +58,17 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
           <div>
-            <DecryptedText
-              text="João Vitor Dadas"
-              speed={100}
-              maxIterations={10}
-              animateOn="view"
-              className="text-lg font-semibold text-white"
-              parentClassName="pt-16 sm:pb-4 sm:pt-24"
-            />
+            <h1
+              className={`pt-16 font-display text-2xl font-semibold sm:pb-4 sm:pt-24`}
+            >
+              João Vitor Dadas
+            </h1>
           </div>
 
           <div>
-            <DecryptedText
-              text="Entrepreneurship, knowledge, and self-improvement."
-              speed={50}
-              maxIterations={10}
-              animateOn="view"
-              sequential
-              className="text-base text-neutral-500"
-              parentClassName="mt-4 pb-12 sm:mt-0"
-            />
+            <p className="mt-4 pb-12 text-base text-neutral-500 sm:mt-0">
+              This place is a fragment of my personality
+            </p>
           </div>
         </div>
 
@@ -94,6 +83,15 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 pb-12">
             <div className="flex flex-col gap-2">
               <p>
+                <LinkText href="https://rigelsense.com/">RigelSense</LinkText>{" "}
+              </p>
+              <p className="text-sm text-neutral-500">
+                Co-founder <span className="italic">(healthtech)</span>.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <p>
                 <LinkText href="https://www.ebanx.com/en/">EBANX</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
@@ -101,7 +99,6 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                 <span className="italic">(fintech)</span>.
               </p>
             </div>
-
             <div className="flex flex-col gap-2">
               <p>
                 <LinkText href="https://sbcash.com.br/">SbCash</LinkText>{" "}
@@ -111,7 +108,6 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                 <span className="italic">(fintech)</span>.
               </p>
             </div>
-
             <div className="flex flex-col gap-2">
               <p>
                 <LinkText href="https://cargon.com.br/esg/">CargOn</LinkText>{" "}
@@ -154,10 +150,10 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
 
         {/* MUSIC */}
         <div className={`${shouldAnimate ? "animate-13" : ""}`}>
-          <div className="flex justify-between pb-6 pt-8 align-middle">
+          <div className="flex justify-between pb-6 align-middle">
             <div className="flex items-center gap-2">
               <Library className={`h-3.5 w-3.5 text-neutral-200`} />
-              <h2 className={`text-sm text-neutral-500`}>Música</h2>
+              <h2 className={`text-sm text-neutral-500`}>Music</h2>
             </div>
             <Link
               href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
@@ -167,10 +163,9 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             </Link>
           </div>
           <div className="flex flex-col gap-4">
-            <NowPlaying />
             <iframe
               style={{ borderRadius: "12px" }}
-              src="https://open.spotify.com/embed/playlist/4F1bTqjUDMaAa5f7eL1xZW?utm_source=generator&theme=0"
+              src="https://open.spotify.com/embed/playlist/0TVRJEfG61DO1qJDXQMHOZ?utm_source=generator&theme=0"
               width="100%"
               height="152"
               frameBorder="0"

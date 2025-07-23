@@ -55,6 +55,16 @@ const MyApp: AppType = ({ Component, pageProps }) => {
             href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap"
             rel="stylesheet"
           />
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link
+            rel="preconnect"
+            href="https://fonts.gstatic.com"
+            crossOrigin=""
+          />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+            rel="stylesheet"
+          />
         </Head>
         <main className="firefox-scrollbar-fix min-h-screen bg-[#111112] text-neutral-200">
           {/* <Header /> */}

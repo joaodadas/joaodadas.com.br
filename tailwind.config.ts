@@ -8,6 +8,7 @@ export default {
       fontFamily: {
         sans: ["Inter", ...defaultTheme.fontFamily.sans],
         serif: ["Sedan", ...defaultTheme.fontFamily.serif],
+        display: ["'Playfair Display'", "serif"],
       },
     },
   },
