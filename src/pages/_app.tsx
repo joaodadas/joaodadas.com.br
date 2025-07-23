@@ -18,7 +18,6 @@ import Quote from "~/components/md/Quote";
 import Strong from "~/components/md/Strong";
 import UnorderedList from "~/components/md/UnorderedList";
 import "~/styles/globals.css";
-import { api } from "~/utils/api";
 import "~/utils/suppressWarnings";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
