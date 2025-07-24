@@ -58,15 +58,30 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
           <div>
-            <h1
-              className={`pt-16 font-display text-2xl font-semibold sm:pb-4 sm:pt-24`}
-            >
-              João Vitor Dadas
-            </h1>
+            <div className="relative inline-block">
+              <h1
+                className={`pt-16 font-display text-2xl font-semibold sm:pb-2 sm:pt-24`}
+              >
+                João Vitor Dadas
+              </h1>
+              <svg
+                className="absolute bottom-0 left-0 z-0 h-3 w-full"
+                viewBox="0 0 100 10"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M0,5 C20,10 80,0 100,5"
+                  stroke="red"
+                  strokeWidth="2"
+                  fill="none"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </div>
           </div>
 
           <div>
-            <p className="mt-4 pb-12 text-base text-neutral-500 sm:mt-0">
+            <p className="mt-4 pb-12 pt-2 text-base text-neutral-500 sm:mt-0">
               This place is a fragment of my personality
             </p>
           </div>
