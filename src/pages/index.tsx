@@ -60,7 +60,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           <div>
             <div className="relative inline-block">
               <h1
-                className={`pt-16 font-display text-2xl font-semibold sm:pb-2 sm:pt-24`}
+                className={`pb-4 font-display text-2xl font-semibold sm:pb-4 sm:pt-24`}
               >
                 João Vitor Dadas
               </h1>
@@ -130,6 +130,14 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               <p className="text-sm text-neutral-500">
                 Work as a Software Engineer{" "}
                 <span className="italic">(logtech)</span>.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p>
+                <LinkText href="https://lu.ma/-ccc?k=c">CCC</LinkText>{" "}
+              </p>
+              <p className="text-sm text-neutral-500">
+                Curitiba Code Club (entrepreneurship and tech collective){" "}
               </p>
             </div>
           </div>
