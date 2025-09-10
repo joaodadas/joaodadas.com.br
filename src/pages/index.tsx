@@ -22,6 +22,7 @@ import LinkText from "~/components/md/LinkText";
 import PostPreview from "~/components/PostPreview";
 import { animateAtom } from "~/utils/atoms";
 import { type BlogPageProps, type PostMetadata } from "./blog";
+import X from "~/components/x";
 
 const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
   const [shouldAnimate, setShouldAnimate] = useAtom(animateAtom);
@@ -57,15 +58,13 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
       <ContentWrapper>
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
-          <div>
+          <div className="flex items-center justify-between sm:pb-4 sm:pt-24">
             <div className="relative inline-block">
-              <h1
-                className={`pb-4 font-display text-2xl font-semibold sm:pb-4 sm:pt-24`}
-              >
+              <h1 className={` font-display text-2xl font-semibold `}>
                 João Vitor Dadas
               </h1>
               <svg
-                className="absolute bottom-0 left-0 z-0 h-3 w-full"
+                className=" bottom-0 left-0 z-0 h-3 w-full"
                 viewBox="0 0 100 10"
                 preserveAspectRatio="none"
               >
@@ -77,6 +76,17 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                   strokeLinecap="round"
                 />
               </svg>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <Link
+                href="https://x.com/joaodadas"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <X
+                  className={`h-4 w-4 transition-opacity duration-200 hover:opacity-80`}
+                />
+              </Link>
             </div>
           </div>
 
