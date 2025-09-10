@@ -104,22 +104,21 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                 Co-founder <span className="italic">(healthtech)</span>.
               </p>
             </div>
-
+            <div className="flex flex-col gap-2">
+              <p>
+                <LinkText href="https://www.uex.io/">UEX</LinkText>{" "}
+              </p>
+              <p className="text-sm text-neutral-500">
+                Work as a Software Engineer{" "}
+                <span className="italic">(Startup Studio)</span>.
+              </p>
+            </div>
             <div className="flex flex-col gap-2">
               <p>
                 <LinkText href="https://www.ebanx.com/en/">EBANX</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
                 Work as a Software Engineer{" "}
-                <span className="italic">(fintech)</span>.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>
-                <LinkText href="https://sbcash.com.br/">SbCash</LinkText>{" "}
-              </p>
-              <p className="text-sm text-neutral-500">
-                Work as a front-end engineer{" "}
                 <span className="italic">(fintech)</span>.
               </p>
             </div>
@@ -137,7 +136,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                 <LinkText href="https://lu.ma/-ccc?k=c">CCC</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
-                Curitiba Code Club (entrepreneurship and tech collective){" "}
+                Curitiba Code Club (Member){" "}
               </p>
             </div>
           </div>
