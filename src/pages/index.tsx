@@ -23,6 +23,7 @@ import PostPreview from "~/components/PostPreview";
 import { animateAtom } from "~/utils/atoms";
 import { type BlogPageProps, type PostMetadata } from "./blog";
 import X from "~/components/x";
+import GeneratedComponent from "~/components/RedCircle";
 
 const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
   const [shouldAnimate, setShouldAnimate] = useAtom(animateAtom);
@@ -249,6 +250,8 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             </motion.div>
           </div>
         </div>
+
+        {/* <GeneratedComponent></GeneratedComponent> */}
       </ContentWrapper>
     </>
   );
