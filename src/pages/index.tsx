@@ -109,7 +109,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           <div className="grid grid-cols-2 gap-x-8 gap-y-4 pb-12">
             <div className="flex flex-col gap-2">
               <p>
-                <LinkText href="https://rigelsense.com/">RigelSense</LinkText>{" "}
+                <LinkText href="https://clynea.ai/">Clynea</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
                 Co-founder <span className="italic">(healthtech)</span>.
