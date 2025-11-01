@@ -117,15 +117,6 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
             </div>
             <div className="flex flex-col gap-2">
               <p>
-                <LinkText href="https://www.uex.io/">UEX</LinkText>{" "}
-              </p>
-              <p className="text-sm text-neutral-500">
-                Work as a Software Engineer{" "}
-                <span className="italic">(Startup Studio)</span>.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>
                 <LinkText href="https://www.ebanx.com/en/">EBANX</LinkText>{" "}
               </p>
               <p className="text-sm text-neutral-500">
