@@ -59,7 +59,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
       <ContentWrapper>
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
-          <div className="flex items-center justify-between sm:pb-4 sm:pt-24">
+          <div className="flex items-center justify-between pt-10 sm:pb-4 sm:pt-24">
             <div className="relative inline-block">
               <h1 className={` font-display text-2xl font-semibold `}>
                 João Vitor Dadas
