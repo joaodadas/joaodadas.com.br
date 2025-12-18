@@ -25,7 +25,7 @@ const Blog: NextPage<BlogPageProps> = ({ postsMetadata }) => {
   const sortedPostsMetadata = postsMetadata.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
-  console.log(" testeeeeesaasdasd", sortedPostsMetadata )
+  console.log(" testeeeeesaasdasd", sortedPostsMetadata);
   return (
     <>
       <Head>
@@ -44,11 +44,6 @@ const Blog: NextPage<BlogPageProps> = ({ postsMetadata }) => {
       </Head>
       <ContentWrapper>
         <BackButton href="/" />
-        <h1
-          className={`text-sm mb-6 text-neutral-500`}
-        >
-          Posts
-        </h1>
         <motion.ul className="flex flex-col">
           {sortedPostsMetadata.map((post) => {
             return (

@@ -2,16 +2,7 @@ import { motion } from "framer-motion";
 import fs from "fs";
 import matter from "gray-matter";
 import { useAtom } from "jotai";
-import {
-  CodeXml,
-  FileText,
-  Github,
-  Linkedin,
-  Mail,
-  PencilLine,
-  User,
-  Library,
-} from "lucide-react";
+import { CodeXml, PencilLine, ChartCandlestick } from "lucide-react";
 import { type GetStaticProps, type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -19,10 +10,10 @@ import path from "path";
 import { useEffect } from "react";
 import ContentWrapper from "~/components/ContentWrapper";
 import LinkText from "~/components/md/LinkText";
+import LinkTextFooter from "~/components/md/LinkTextFooter";
 import PostPreview from "~/components/PostPreview";
 import { animateAtom } from "~/utils/atoms";
 import { type BlogPageProps, type PostMetadata } from "./blog";
-import X from "~/components/x";
 // import GeneratedComponent from "~/components/RedCircle";
 
 const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
@@ -59,41 +50,17 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
       <ContentWrapper>
         {/* BIO */}
         <div className={`${shouldAnimate ? "animate-5" : ""}`}>
-          <div className="flex items-center justify-between pt-10 sm:pb-4 sm:pt-24">
+          <div className="flex items-center justify-between pt-10 sm:pb-2 sm:pt-24">
             <div className="relative inline-block">
-              <h1 className={` font-display text-2xl font-semibold `}>
+              <h1 className={` font-display text-xl font-semibold `}>
                 João Vitor Dadas
               </h1>
-              <svg
-                className=" bottom-0 left-0 z-0 h-3 w-full"
-                viewBox="0 0 100 10"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M0,5 C20,10 80,0 100,5"
-                  stroke="red"
-                  strokeWidth="2"
-                  fill="none"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </div>
-            <div className="flex items-center justify-center gap-4">
-              <Link
-                href="https://x.com/joaodadas"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <X
-                  className={`h-4 w-4 transition-opacity duration-200 hover:opacity-80`}
-                />
-              </Link>
             </div>
           </div>
 
           <div>
-            <p className="mt-4 pb-12 pt-2 text-base text-neutral-500 sm:mt-0">
-              This place is a fragment of my personality
+            <p className="mt-4 pb-12 pt-2 text-sm text-neutral-400 sm:mt-0">
+              Somewhere between finance and tech
             </p>
           </div>
         </div>
@@ -101,8 +68,8 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         {/* PROJECTS */}
         <div className={`${shouldAnimate ? "animate-7" : ""}`}>
           <div className="flex items-center gap-2 pb-6">
-            <CodeXml className={`h-3.5 w-3.5 text-neutral-200`} />
-            <h2 className={`text-sm text-neutral-500`}>
+            <CodeXml className={`h-3.5 w-3.5 text-neutral-400`} />
+            <h2 className={`text-sm text-neutral-400`}>
               Projects I&apos;ve worked on
             </h2>
           </div>
@@ -111,7 +78,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               <p>
                 <LinkText href="https://clynea.ai/">Clynea</LinkText>{" "}
               </p>
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-400">
                 Co-founder <span className="italic">(healthtech)</span>.
               </p>
             </div>
@@ -119,7 +86,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               <p>
                 <LinkText href="https://www.ebanx.com/en/">EBANX</LinkText>{" "}
               </p>
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-400">
                 Work as a Software Engineer{" "}
                 <span className="italic">(fintech)</span>.
               </p>
@@ -128,7 +95,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               <p>
                 <LinkText href="https://cargon.com.br/esg/">CargOn</LinkText>{" "}
               </p>
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-400">
                 Work as a Software Engineer{" "}
                 <span className="italic">(logtech)</span>.
               </p>
@@ -137,7 +104,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
               <p>
                 <LinkText href="https://lu.ma/-ccc?k=c">CCC</LinkText>{" "}
               </p>
-              <p className="text-sm text-neutral-500">
+              <p className="text-sm text-neutral-400">
                 Curitiba Code Club (Member){" "}
               </p>
             </div>
@@ -145,15 +112,15 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         </div>
 
         {/* WRITING */}
-        <div className={`${shouldAnimate ? "animate-10" : ""}`}>
+        <div className={`${shouldAnimate ? "animate-10" : ""} pb-12`}>
           <div className="flex justify-between pb-6 align-middle">
             <div className="flex items-center gap-2">
-              <PencilLine className={`h-3.5 w-3.5 text-neutral-200`} />
-              <h2 className={`text-sm text-neutral-500`}>Blog</h2>
+              <PencilLine className={`h-3.5 w-3.5 text-neutral-400`} />
+              <h2 className={`text-sm text-neutral-400`}>Blog</h2>
             </div>
             <Link
               href="/blog"
-              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[red]`}
+              className={`text-sm text-neutral-400 transition duration-200 ease-in-out hover:text-neutral-700`}
             >
               Full content...
             </Link>
@@ -176,73 +143,41 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         <div className={`${shouldAnimate ? "animate-13" : ""}`}>
           <div className="flex justify-between pb-6 align-middle">
             <div className="flex items-center gap-2">
-              <Library className={`h-3.5 w-3.5 text-neutral-200`} />
-              <h2 className={`text-sm text-neutral-500`}>Music</h2>
+              <ChartCandlestick className={`h-4 w-4 text-neutral-500`} />
+              <h2 className={`text-sm text-neutral-500`}>
+                investment portfolio
+              </h2>
             </div>
             <Link
-              href="https://open.spotify.com/user/12159908355?si=c71c739a37fd4113"
-              className={`text-sm text-neutral-200 underline decoration-neutral-500 transition duration-200 ease-in-out hover:decoration-[red]`}
+              href="/"
+              className={`text-sm text-neutral-400 transition duration-200 ease-in-out hover:text-neutral-700`}
             >
-              Ver todas...
+              Coming soon...
             </Link>
           </div>
           <div className="flex flex-col gap-4">
-            <iframe
-              style={{ borderRadius: "12px" }}
-              src="https://open.spotify.com/embed/playlist/0TVRJEfG61DO1qJDXQMHOZ?utm_source=generator&theme=0"
-              width="100%"
-              height="152"
-              frameBorder="0"
-              allowFullScreen
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-            ></iframe>
+            <p className="text-sm text-neutral-700">
+              Here you will find my investment portfolio and some of my thoughts
+              on the market.
+            </p>
           </div>
         </div>
 
-        {/* CONNECT */}
-        <div className={`${shouldAnimate ? "animate-15" : ""}`}>
-          <div className="flex items-center gap-2 pb-6 pt-8 ">
-            <User className={`h-3.5 w-3.5 text-neutral-200`} />
-            <h2 className={`text-sm text-neutral-500`}>Connect</h2>
-          </div>
-          <div className="flex gap-8">
-            <motion.div className="flex items-center gap-2 transition duration-200 ease-in-out">
-              <Github
-                className={`h-4 w-4 text-neutral-500 transition-colors duration-200`}
-              />
-              <LinkText href="https://github.com/joaodadas">
-                <p className="text-sm">GitHub</p>
-              </LinkText>
-            </motion.div>
-            <motion.div className="flex items-center gap-2 transition duration-200 ease-in-out">
-              <Linkedin
-                className={`h-4 w-4 text-neutral-500 transition-colors duration-200`}
-              />
-              <LinkText href="https://www.linkedin.com/in/jo%C3%A3o-vitor-dadas/">
-                <p className="text-sm">LinkedIn</p>
-              </LinkText>
-            </motion.div>
-            <motion.div className="flex items-center gap-2 transition duration-200 ease-in-out">
-              <Mail
-                className={`h-4 w-4 text-neutral-500 transition-colors duration-200`}
-              />
-              <LinkText href="mailto:dadasjv@hotmail.com">
-                <p className="text-sm">Email</p>
-              </LinkText>
-            </motion.div>
-            <motion.div className="flex items-center gap-2 transition duration-200 ease-in-out">
-              <FileText
-                className={`h-4 w-4 text-neutral-500 transition-colors duration-200`}
-              />
-              <LinkText href="https://noon-peace-17b.notion.site/Jo-o-Vitor-Dadas-13723ef5b82580bbb164ced6a2b3633d?pvs=4">
-                <p className="text-sm">CV</p>
-              </LinkText>
-            </motion.div>
-          </div>
+        <div className="flex flex-wrap items-center gap-6 pb-12 pt-16 text-sm">
+          <LinkTextFooter href="https://x.com/joaodadas">X</LinkTextFooter>
+          <LinkTextFooter href="https://github.com/joaodadas">
+            GitHub
+          </LinkTextFooter>
+          <LinkTextFooter href="https://www.linkedin.com/in/jo%C3%A3o-vitor-dadas/">
+            LinkedIn
+          </LinkTextFooter>
+          <LinkTextFooter href="mailto:dadasjv@hotmail.com">
+            Email
+          </LinkTextFooter>
+          <LinkTextFooter href="https://noon-peace-17b.notion.site/Jo-o-Vitor-Dadas-13723ef5b82580bbb164ced6a2b3633d?pvs=4">
+            Resume
+          </LinkTextFooter>
         </div>
-
-        {/* <GeneratedComponent></GeneratedComponent> */}
       </ContentWrapper>
     </>
   );
