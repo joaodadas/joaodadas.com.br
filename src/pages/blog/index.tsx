@@ -53,6 +53,7 @@ const Blog: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                   description={post.description}
                   date={post.date}
                   slug={post.slug}
+                  showDate
                 />
               </motion.li>
             );

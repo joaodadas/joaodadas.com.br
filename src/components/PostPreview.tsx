@@ -6,9 +6,16 @@ type PostPreviewProps = {
   description: string;
   date: string;
   slug: string;
+  showDate?: boolean;
 };
 
-const PostPreview = ({ title, description, date, slug }: PostPreviewProps) => {
+const PostPreview = ({
+  title,
+  description,
+  date,
+  slug,
+  showDate = false,
+}: PostPreviewProps) => {
   const formattedDate = (() => {
     const parsed = new Date(date);
     return Number.isNaN(parsed.getTime())
@@ -28,9 +35,11 @@ const PostPreview = ({ title, description, date, slug }: PostPreviewProps) => {
           </h2>
           <p className="text-sm text-neutral-400">{description}</p>
         </div>
-        <p className="hidden min-w-fit text-sm text-neutral-300 md:block">
-          {formattedDate}
-        </p>
+        {showDate ? (
+          <p className="hidden min-w-fit text-sm text-neutral-300 md:block">
+            {formattedDate}
+          </p>
+        ) : null}
       </motion.div>
     </Link>
   );

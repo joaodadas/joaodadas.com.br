@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import fs from "fs";
 import matter from "gray-matter";
 import { useAtom } from "jotai";
-import { CodeXml, PencilLine, ChartCandlestick } from "lucide-react";
+import { TableOfContents, PencilLine, ChartCandlestick } from "lucide-react";
 import { type GetStaticProps, type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
@@ -68,7 +68,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
         {/* PROJECTS */}
         <div className={`${shouldAnimate ? "animate-7" : ""}`}>
           <div className="flex items-center gap-2 pb-6">
-            <CodeXml className={`h-3.5 w-3.5 text-neutral-400`} />
+            <TableOfContents className={`h-3.5 w-3.5 text-neutral-400`} />
             <h2 className={`text-sm text-neutral-400`}>
               Projects I&apos;ve worked on
             </h2>
@@ -111,12 +111,12 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           </div>
         </div>
 
-        {/* WRITING */}
+        {/* ARTICLES */}
         <div className={`${shouldAnimate ? "animate-10" : ""} pb-12`}>
           <div className="flex justify-between pb-6 align-middle">
             <div className="flex items-center gap-2">
               <PencilLine className={`h-3.5 w-3.5 text-neutral-400`} />
-              <h2 className={`text-sm text-neutral-400`}>Blog</h2>
+              <h2 className={`text-sm text-neutral-400`}>Articles</h2>
             </div>
             <Link
               href="/blog"
@@ -133,18 +133,19 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
                   description={postMetadata.description}
                   date={postMetadata.date}
                   slug={postMetadata.slug}
+                  showDate={false}
                 />
               </motion.li>
             ))}
           </ul>
         </div>
 
-        {/* MUSIC */}
+        {/* INVESTMENTS */}
         <div className={`${shouldAnimate ? "animate-13" : ""}`}>
           <div className="flex justify-between pb-6 align-middle">
             <div className="flex items-center gap-2">
-              <ChartCandlestick className={`h-4 w-4 text-neutral-500`} />
-              <h2 className={`text-sm text-neutral-500`}>
+              <ChartCandlestick className={`h-4 w-4 text-neutral-400`} />
+              <h2 className={`text-sm text-neutral-400`}>
                 investment portfolio
               </h2>
             </div>
@@ -163,7 +164,7 @@ const Home: NextPage<BlogPageProps> = ({ postsMetadata }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-6 pb-12 pt-16 text-sm">
+        <div className="flex flex-wrap items-center gap-6 pb-12 pt-24 text-sm">
           <LinkTextFooter href="https://x.com/joaodadas">X</LinkTextFooter>
           <LinkTextFooter href="https://github.com/joaodadas">
             GitHub
