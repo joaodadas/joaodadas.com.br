@@ -16,7 +16,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Para Letícia",
     description: "",
-    images: [],
+    images: [
+      {
+        url: "https://joaodadas.com/galleryIMGs/space/08.jpg",
+        width: 736,
+        height: 981,
+      },
+    ],
   },
 };
 
