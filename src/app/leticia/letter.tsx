@@ -112,10 +112,19 @@ function LetterBody() {
       transition={{ duration: 1.4, ease: "easeOut" }}
       className="mx-auto max-w-[40rem] px-7 pb-28 pt-20 sm:px-8 sm:pt-28"
     >
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.4, delay: 0.2, ease: EASE }}
+        className="mb-10 text-right font-display text-[13px] italic tracking-wide text-[#8a8178]"
+      >
+        10 de junho de 2026, 11:20
+      </motion.p>
+
       <motion.h2
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.6, delay: 0.3, ease: EASE }}
+        transition={{ duration: 1.6, delay: 0.4, ease: EASE }}
         className="mb-14 font-display text-3xl italic"
       >
         Letícia,
