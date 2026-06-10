@@ -4,8 +4,9 @@ import { prisma } from "~/lib/prisma";
 import GuestbookContent from "./guestbook-content";
 
 export const metadata: Metadata = {
-  title: "Guestbook - João Vitor Dadas",
+  title: "Guestbook",
   description: "Sign my guestbook",
+  alternates: { canonical: "/guestbook" },
 };
 
 const PAGE_SIZE = 30;

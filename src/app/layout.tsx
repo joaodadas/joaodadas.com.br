@@ -21,17 +21,40 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "João Vitor Dadas",
+  metadataBase: new URL("https://joaodadas.com"),
+  title: {
+    default: "João Vitor Dadas",
+    template: "%s - João Vitor Dadas",
+  },
   description: "Brazilian software engineer",
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     title: "João Vitor Dadas",
     description: "Brazilian software engineer",
     type: "website",
-    url: "https://www.joaodadas.com.br",
+    url: "https://joaodadas.com",
     siteName: "João Vitor Dadas",
-    images: ["https://www.joaodadas.com.br/api/og"],
+    images: ["/api/og"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "João Vitor Dadas",
+    description: "Brazilian software engineer",
+    images: ["/api/og"],
   },
   icons: "/favicon.ico",
+};
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "João Vitor Dadas",
+  url: "https://joaodadas.com",
+  jobTitle: "Software Engineer",
+  nationality: "Brazilian",
+  sameAs: ["https://github.com/joaodadas"],
 };
 
 export default function RootLayout({
@@ -46,6 +69,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="antialiased overflow-x-hidden">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         <ThemeProvider>
           <Providers>
             <Analytics />

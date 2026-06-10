@@ -4,7 +4,9 @@ import ContentWrapper from "~/components/ContentWrapper";
 import PostPreview from "~/components/PostPreview";
 
 export const metadata: Metadata = {
-  title: "Articles - João Vitor Dadas",
+  title: "Articles",
+  description: "Articles on software engineering and design.",
+  alternates: { canonical: "/blog" },
 };
 
 export default function BlogPage() {

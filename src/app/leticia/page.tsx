@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Letter from "./letter";
 
 export const metadata: Metadata = {
-  title: "Para Letícia",
+  title: { absolute: "Para Letícia" },
   description: "",
   robots: {
     index: false,
