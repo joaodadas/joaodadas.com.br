@@ -1,0 +1,16 @@
+{
+  "name": "Joao Dadas NFT #001",
+  "symbol": "JD",
+  "description": "NFT criado na Solana.",
+  "image": "https://joaodadas.com/galleryIMGs/space/09.jpg",
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://joaodadas.com/galleryIMGs/space/09.jpg",
+        "type": "image/jpeg"
+      }
+    ],
+    "category": "image"
+  }
+}

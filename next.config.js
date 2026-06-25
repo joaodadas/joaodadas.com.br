@@ -23,6 +23,24 @@ const nextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        // CORS para o metadata JSON do NFT — o Metaplex Core UI faz fetch disso
+        // no browser pra renderizar o preview.
+        source: "/nft/:path*",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          { key: "Access-Control-Allow-Methods", value: "GET, OPTIONS" },
+        ],
+      },
+      {
+        // CORS para as imagens da galeria referenciadas pelo metadata.
+        source: "/galleryIMGs/:path*",
+        headers: [{ key: "Access-Control-Allow-Origin", value: "*" }],
+      },
+    ];
+  },
   webpack: (config) => {
     config.plugins.push(new VeliteWebpackPlugin());
     return config;
